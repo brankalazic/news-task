@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="news">
+      <h2 data-cy="newsDetailsHeading"><span jhiTranslate="newstaskApp.news.detail.title">News</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ news.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newstaskApp.news.name">Name</span></dt>
+        <dd>
+          <span>{{ news.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="newstaskApp.news.description">Description</span></dt>
+        <dd>
+          <span>{{ news.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="newstaskApp.news.category">Category</span></dt>
+        <dd>
+          <span>{{ news.category }}</span>
+        </dd>
+        <dt><span jhiTranslate="newstaskApp.news.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ news.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="newstaskApp.news.author">Author</span></dt>
+        <dd>
+          <span>{{ news.author?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/news', news.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
